@@ -1,0 +1,21 @@
+{
+  "name": "tirol_rsya_b",
+  "version": "1.0.0",
+  "description": "Landing page for Tirol RSYA campaign variant B",
+  "engines": {
+    "node": "22"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "jsdom": "^29.0.1",
+    "vite": "^8.0.5",
+    "vitest": "^4.1.2"
+  }
+}
