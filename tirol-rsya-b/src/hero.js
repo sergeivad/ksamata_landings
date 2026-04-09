@@ -1,8 +1,8 @@
 const gcScriptUrl =
-  'https://gc.ksamata.ru/pl/lite/widget/script?id=1342759';
+  'https://gc.tirolab.ru/pl/lite/widget/script?id=1465148';
 const gcPopupScriptUrl =
-  'https://gc.ksamata.ru/pl/lite/widget/script?id=1342759&form=popup';
-const gcWidgetScriptId = '5659ad15c501e7bbbf424823abe7224aa9cdd4d2';
+  'https://gc.tirolab.ru/pl/lite/widget/script?id=1465148&form=popup';
+const gcWidgetScriptId = 'f1d853b8f9058f3ebf34fa036dede573f33ff806';
 const assetBase = import.meta.env.BASE_URL ?? '/';
 const asset = (path) => `${assetBase}assets/${path}`.replace(/([^:]\/)\/+/g, '$1');
 const doctorImageUrl =

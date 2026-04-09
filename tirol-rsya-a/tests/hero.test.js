@@ -40,7 +40,7 @@ describe('renderHero', () => {
     expect(markup).toContain('href="#"');
     expect(markup).toContain('data-gc-script');
     expect(markup).toContain('data-gc-popup-trigger');
-    expect(markup).toContain('https://gc.ksamata.ru/pl/lite/widget/script?id=1342759');
+    expect(markup).toContain('https://gc.tirolab.ru/pl/lite/widget/script?id=1465148');
     expect(markup).not.toContain(
       'Кнопка уже подготовлена под popup GetCourse и будет подключена через ваш виджет.',
     );
@@ -161,7 +161,7 @@ describe('renderHero', () => {
     expect(markup).toContain('…остался 1 шаг');
     expect(markup).toContain('registration-gifts__widget');
     expect(markup).toContain('data-gc-inline-widget');
-    expect(markup).toContain('https://gc.ksamata.ru/pl/lite/widget/script?id=1342759');
+    expect(markup).toContain('https://gc.tirolab.ru/pl/lite/widget/script?id=1465148');
     expect(markup).toContain('/assets/tild3937-6465-4265-b836-336434313539__group_1833-2.png');
   });
 
@@ -172,7 +172,7 @@ describe('renderHero', () => {
     expect(markup).toContain('data-gc-popup-widget');
     expect(markup).toContain('data-gc-popup-close');
     expect(markup).toContain(
-      'https://gc.ksamata.ru/pl/lite/widget/script?id=1342759&form=popup',
+      'https://gc.tirolab.ru/pl/lite/widget/script?id=1465148&form=popup',
     );
   });
 
