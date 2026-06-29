@@ -1,15 +1,15 @@
-// TODO: заменить id=1465148 на ID курса «суставы и позвоночник» (GetCourse)
 const gcScriptUrl =
-  'https://gc.tirolab.ru/pl/lite/widget/script?id=1465148';
+  'https://gc.ksamata.ru/pl/lite/widget/script?id=1311172';
 const gcPopupScriptUrl =
-  'https://gc.tirolab.ru/pl/lite/widget/script?id=1465148&form=popup';
-const gcWidgetScriptId = 'f1d853b8f9058f3ebf34fa036dede573f33ff806';
+  'https://gc.ksamata.ru/pl/lite/widget/script?id=1311172&form=popup';
+const gcWidgetScriptId = '7bcfb9aebc8ee55c4b483044e664f4b109334f4e';
 const assetBase = import.meta.env.BASE_URL ?? '/';
 const asset = (path) => `${assetBase}assets/${path}`.replace(/([^:]\/)\/+/g, '$1');
 
 const doctorImageUrl = asset('speaker-pose.png');
 const speakerPortraitUrl = asset('speaker-portrait.png');
-const giftBoxesUrl = asset('tz-gifts-boxes.png');
+const giftBox1Url = asset('gift-box-1.png');
+const giftBox2Url = asset('gift-box-2.png');
 
 const conditions = [
   'Хочет вернуть подвижность и избавиться от хронической боли в суставах и позвоночнике.',
@@ -367,11 +367,10 @@ function renderSecondScreen() {
             </p>
 
             <div class="course-offer__gift">
-              <img
-                class="course-offer__gift-icon"
-                src="${giftBoxesUrl}"
-                alt=""
-              />
+              <span class="course-offer__gift-icons" aria-hidden="true">
+                <img src="${giftBox1Url}" alt="" />
+                <img src="${giftBox2Url}" alt="" />
+              </span>
               <p class="course-offer__gift-text">
                 Получите <strong>ДВА ПОДАРКА</strong> сразу после регистрации!
               </p>
@@ -580,20 +579,23 @@ function renderGiftsShowcaseSection() {
           Регистрируйтесь на бесплатный курс прямо сейчас и заберите подарки
         </h2>
 
-        <div class="gifts-showcase__boxes">
-          <img class="gifts-showcase__boxes-image" src="${giftBoxesUrl}" alt="Подарки за регистрацию" />
-        </div>
+        <div class="gifts-showcase__grid">
+          <article class="gifts-showcase__card">
+            <div class="gifts-showcase__box">
+              <img src="${giftBox1Url}" alt="Чек-лист «Как выбрать правильную обувь для здоровья суставов»" />
+            </div>
+            <h3 class="gifts-showcase__gift-title">ПОДАРОК 1 — Чек-лист</h3>
+            <p class="gifts-showcase__gift-text">«Как выбрать правильную обувь для здоровья суставов»</p>
+          </article>
 
-        <ul class="gifts-showcase__list">
-          <li class="gifts-showcase__item">
-            <strong>ПОДАРОК 1 — Чек-лист</strong>
-            <span>«Как выбрать правильную обувь для здоровья суставов»</span>
-          </li>
-          <li class="gifts-showcase__item">
-            <strong>ПОДАРОК 2 — Гид/Видеокурс</strong>
-            <span>«Секреты сохранения здоровья суставов и спины при уборке и готовке дома»</span>
-          </li>
-        </ul>
+          <article class="gifts-showcase__card">
+            <div class="gifts-showcase__box">
+              <img src="${giftBox2Url}" alt="Гид/Видеокурс «Секреты сохранения здоровья суставов и спины при уборке и готовке дома»" />
+            </div>
+            <h3 class="gifts-showcase__gift-title">ПОДАРОК 2 — Гид/Видеокурс</h3>
+            <p class="gifts-showcase__gift-text">«Секреты сохранения здоровья суставов и спины при уборке и готовке дома»</p>
+          </article>
+        </div>
 
         <div class="gifts-showcase__cta">
           <a

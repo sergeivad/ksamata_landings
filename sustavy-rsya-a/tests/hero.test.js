@@ -43,7 +43,7 @@ describe('renderHero', () => {
     expect(markup).toContain('href="#"');
     expect(markup).toContain('data-gc-script');
     expect(markup).toContain('data-gc-popup-trigger');
-    expect(markup).toContain('https://gc.tirolab.ru/pl/lite/widget/script?id=1465148');
+    expect(markup).toContain('https://gc.ksamata.ru/pl/lite/widget/script?id=1311172');
   });
 
   it('renders the second-screen offer with free price block (БЛОК 2)', () => {
@@ -136,7 +136,8 @@ describe('renderHero', () => {
     expect(markup).toContain('ПОДАРОК 1 — Чек-лист');
     expect(markup).toContain('ПОДАРОК 2 — Гид/Видеокурс');
     expect(markup).toContain('Забрать подарки');
-    expect(markup).toContain('/assets/tz-gifts-boxes.png');
+    expect(markup).toContain('/assets/gift-box-1.png');
+    expect(markup).toContain('/assets/gift-box-2.png');
   });
 
   it('renders the program accordion with five days (БЛОК 7)', () => {
@@ -179,7 +180,7 @@ describe('renderHero', () => {
     expect(markup).toContain('Регистрация на бесплатный курс');
     expect(markup).toContain('final-registration__widget');
     expect(markup).toContain('data-gc-inline-widget');
-    expect(markup).toContain('https://gc.tirolab.ru/pl/lite/widget/script?id=1465148');
+    expect(markup).toContain('https://gc.ksamata.ru/pl/lite/widget/script?id=1311172');
   });
 
   it('renders a popup host for all getcourse CTA buttons', () => {
@@ -189,7 +190,7 @@ describe('renderHero', () => {
     expect(markup).toContain('data-gc-popup-widget');
     expect(markup).toContain('data-gc-popup-close');
     expect(markup).toContain(
-      'https://gc.tirolab.ru/pl/lite/widget/script?id=1465148&form=popup',
+      'https://gc.ksamata.ru/pl/lite/widget/script?id=1311172&form=popup',
     );
   });
 
