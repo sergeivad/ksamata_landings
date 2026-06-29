@@ -10,7 +10,6 @@ const asset = (path) => `${assetBase}assets/${path}`.replace(/([^:]\/)\/+/g, '$1
 const doctorImageUrl = asset('speaker-pose.png');
 const speakerPortraitUrl = asset('speaker-portrait.png');
 const giftBoxesUrl = asset('tz-gifts-boxes.png');
-const registrationBackgroundUrl = asset('tz-gifts-pair.png');
 
 const conditions = [
   'Хочет вернуть подвижность и избавиться от хронической боли в суставах и позвоночнике.',
@@ -683,13 +682,9 @@ function renderFinalRegistrationSection() {
   return `
     <section class="final-registration" aria-labelledby="final-registration-title">
       <div class="final-registration__shell">
-        <div class="final-registration__bg" aria-hidden="true">
-          <img class="final-registration__bg-image" src="${registrationBackgroundUrl}" alt="" />
-        </div>
-
         <div class="final-registration__content">
           <h2 class="final-registration__title" id="final-registration-title">
-            …остался 1 шаг
+            Регистрация на бесплатный курс
           </h2>
 
           <p class="final-registration__lead">

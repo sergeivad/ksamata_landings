@@ -176,7 +176,7 @@ describe('renderHero', () => {
   it('renders the final inline registration form (БЛОК 9)', () => {
     const markup = renderHero();
 
-    expect(markup).toContain('…остался 1 шаг');
+    expect(markup).toContain('Регистрация на бесплатный курс');
     expect(markup).toContain('final-registration__widget');
     expect(markup).toContain('data-gc-inline-widget');
     expect(markup).toContain('https://gc.tirolab.ru/pl/lite/widget/script?id=1465148');
