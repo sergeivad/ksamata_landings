@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/rsya/sustavy/a/',
+  base: './',
   test: {
     environment: 'node',
   },
