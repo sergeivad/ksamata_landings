@@ -1,3 +1,8 @@
+// ВРЕМЕННЫЙ РЕЖИМ МОДЕРАЦИИ.
+// true  = скрыты все блоки, кроме первого экрана (упрощённого), блока спикера и финального экрана.
+// ОТКАТ: поставить MODERATION = false, пересобрать и задеплоить — страница вернётся ровно как была.
+const MODERATION = true;
+
 const gcScriptUrl =
   'https://gc.ksamata.ru/pl/lite/widget/script?id=1311172';
 const gcPopupScriptUrl =
@@ -751,7 +756,7 @@ function renderSiteFooter() {
 
 export function renderHero() {
   return `
-    <main class="page-shell">
+    <main class="page-shell${MODERATION ? ' is-moderation' : ''}">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__atmosphere hero__atmosphere--left" aria-hidden="true"></div>
         <div class="hero__atmosphere hero__atmosphere--right" aria-hidden="true"></div>
@@ -763,6 +768,7 @@ export function renderHero() {
               <h1 class="hero__title" id="hero-title">
                 Ищу 4-х женщин и мужчин, которые устали от болей в суставах, скованности в спине, прострелов в пояснице и ограничений в движении
               </h1>
+              ${MODERATION ? `<h1 class="hero__title hero__title--moderation">Бесплатный курс про суставы и позвоночник от чемпиона мира по Цигун</h1>` : ''}
               <p class="hero__lead">
                 За 5 дней разберём причины болей и пути восстановления без таблеток и операций.
               </p>
