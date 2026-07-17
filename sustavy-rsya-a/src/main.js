@@ -33,7 +33,7 @@ const loadGetCourseWidget = (container) => {
   const src = container.getAttribute('data-gc-script');
   const scriptId =
     container.getAttribute('data-gc-script-id') ??
-    '7bcfb9aebc8ee55c4b483044e664f4b109334f4e';
+    '4bca52bfc6b67b0c4ffb4d25ce52e1f61d6cf7b9';
 
   if (!src) {
     return;

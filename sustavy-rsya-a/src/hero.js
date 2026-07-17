@@ -3,11 +3,6 @@
 // ОТКАТ: поставить MODERATION = false, пересобрать и задеплоить — страница вернётся ровно как была.
 const MODERATION = true;
 
-const gcScriptUrl =
-  'https://gc.ksamata.ru/pl/lite/widget/script?id=1311172';
-const gcPopupScriptUrl =
-  'https://gc.ksamata.ru/pl/lite/widget/script?id=1311172&form=popup';
-const gcWidgetScriptId = '7bcfb9aebc8ee55c4b483044e664f4b109334f4e';
 const assetBase = import.meta.env.BASE_URL ?? '/';
 const asset = (path) => `${assetBase}assets/${path}`.replace(/([^:]\/)\/+/g, '$1');
 
@@ -244,6 +239,15 @@ export function getFooterLegalLinks(hostname) {
     ofertaUrl: `https://gc.${rootDomain}/oferta`,
   };
 }
+
+// GetCourse-виджет. Домен виджета обязан совпадать с доменом самого лендинга:
+// на land.zhizn-bez-boli.ru → gc.zhizn-bez-boli.ru, на land.ksamata.ru → gc.ksamata.ru.
+// Поэтому хост берём из текущего домена страницы (в Node/тестах — фолбэк ksamata.ru).
+const gcWidgetId = '1611166';
+const gcWidgetScriptId = '4bca52bfc6b67b0c4ffb4d25ce52e1f61d6cf7b9';
+const gcHost = `gc.${getRootDomain()}`;
+const gcScriptUrl = `https://${gcHost}/pl/lite/widget/script?id=${gcWidgetId}`;
+const gcPopupScriptUrl = `https://${gcHost}/pl/lite/widget/script?id=${gcWidgetId}&form=popup`;
 
 const renderList = (items) =>
   items
