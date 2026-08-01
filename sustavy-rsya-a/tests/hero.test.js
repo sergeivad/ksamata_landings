@@ -43,7 +43,7 @@ describe('renderHero', () => {
     expect(markup).toContain('href="#"');
     expect(markup).toContain('data-gc-script');
     expect(markup).toContain('data-gc-popup-trigger');
-    expect(markup).toContain('https://gc.ksamata.ru/pl/lite/widget/script?id=1611166');
+    expect(markup).toContain('https://gc.ksamata.ru/pl/lite/widget/script?id=1570616');
   });
 
   it('renders the second-screen offer with free price block (БЛОК 2)', () => {
@@ -180,7 +180,7 @@ describe('renderHero', () => {
     expect(markup).toContain('Регистрация на бесплатный курс');
     expect(markup).toContain('final-registration__widget');
     expect(markup).toContain('data-gc-inline-widget');
-    expect(markup).toContain('https://gc.ksamata.ru/pl/lite/widget/script?id=1611166');
+    expect(markup).toContain('https://gc.ksamata.ru/pl/lite/widget/script?id=1570616');
   });
 
   it('renders a popup host for all getcourse CTA buttons', () => {
@@ -190,7 +190,7 @@ describe('renderHero', () => {
     expect(markup).toContain('data-gc-popup-widget');
     expect(markup).toContain('data-gc-popup-close');
     expect(markup).toContain(
-      'https://gc.ksamata.ru/pl/lite/widget/script?id=1611166&form=popup',
+      'https://gc.ksamata.ru/pl/lite/widget/script?id=1570616&form=popup',
     );
   });
 

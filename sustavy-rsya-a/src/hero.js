@@ -238,8 +238,8 @@ export function getFooterLegalLinks(hostname) {
 // GetCourse-виджет. Домен виджета обязан совпадать с доменом самого лендинга:
 // на land.zhizn-bez-boli.ru → gc.zhizn-bez-boli.ru, на land.ksamata.ru → gc.ksamata.ru.
 // Поэтому хост берём из текущего домена страницы (в Node/тестах — фолбэк ksamata.ru).
-const gcWidgetId = '1611166';
-const gcWidgetScriptId = '4bca52bfc6b67b0c4ffb4d25ce52e1f61d6cf7b9';
+const gcWidgetId = '1570616';
+const gcWidgetScriptId = '2ecc4498c0c53da44fa428143fa24907421faa41';
 const gcHost = `gc.${getRootDomain()}`;
 const gcScriptUrl = `https://${gcHost}/pl/lite/widget/script?id=${gcWidgetId}`;
 const gcPopupScriptUrl = `https://${gcHost}/pl/lite/widget/script?id=${gcWidgetId}&form=popup`;
