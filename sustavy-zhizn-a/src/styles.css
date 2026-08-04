@@ -3159,6 +3159,9 @@ a {
 .is-moderation .reviews-showcase,
 .is-moderation .gifts-showcase,
 .is-moderation .program,
-.is-moderation .two-reasons {
+.is-moderation .two-reasons,
+.is-moderation .speaker-intro,
+.is-moderation .final-registration,
+.is-moderation .site-footer {
   display: none;
 }
