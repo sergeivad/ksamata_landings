@@ -757,7 +757,7 @@ function renderSiteFooter() {
 // true  — упрощённый вид: только заголовок + кнопка + подарки на 1-м экране,
 //         плюс блок со спикером и финальный экран; остальное скрыто через CSS.
 // false — обычный полный лендинг. Откат = поставить false и передеплоить.
-const MODERATION = false;
+const MODERATION = true;
 
 export function renderHero() {
   return `
