@@ -2671,11 +2671,12 @@ a {
 
 /* ============================================================
    Временный режим модерации (класс .is-moderation на .page-shell).
-   На странице остаются первый экран (целиком) и второй экран,
-   на котором — только заголовок «Щитовидка под контролем» и кнопка.
+   На странице остаётся только второй экран, а на нём — заголовок
+   «Щитовидка под контролем» и кнопка регистрации.
    Откат: поставить MODERATION = false в src/hero.js — правила
    ни на что не влияют, разметка и стили остаются нетронутыми.
    ============================================================ */
+.is-moderation .hero,
 .is-moderation .speaker-intro,
 .is-moderation .symptom-grid,
 .is-moderation .benefits-grid,
@@ -2693,6 +2694,17 @@ a {
   display: none;
 }
 
+.is-moderation .course-offer {
+  display: flex;
+  align-items: center;
+  min-height: 100svh;
+  padding: 48px 20px;
+}
+
+.is-moderation .course-offer__shell {
+  width: 100%;
+}
+
 .is-moderation .course-offer__layout,
 .is-moderation .course-offer__layout--balanced {
   grid-template-columns: minmax(0, 1fr);
@@ -2703,7 +2715,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 64px 32px;
+  padding: 72px 32px;
   text-align: center;
 }
 
@@ -2712,12 +2724,16 @@ a {
 }
 
 .is-moderation .course-offer__button {
-  margin-top: 32px;
+  margin-top: 36px;
 }
 
 @media (max-width: 640px) {
+  .is-moderation .course-offer {
+    padding: 28px 14px;
+  }
+
   .is-moderation .course-offer__content,
   .is-moderation .course-offer__content--balanced {
-    padding: 44px 18px;
+    padding: 48px 18px;
   }
 }
