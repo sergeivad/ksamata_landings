@@ -3,6 +3,16 @@ const gcScriptUrl =
 const gcPopupScriptUrl =
   'https://gc.tirolab.ru/pl/lite/widget/script?id=1465148&form=popup';
 const gcWidgetScriptId = 'f1d853b8f9058f3ebf34fa036dede573f33ff806';
+
+// Режим модерации РСЯ (ТЗ «правки для модерации — ЩИТ», 28.09.2026).
+// Не рендерятся: заголовок и блоки «Условия / Что делать» первого экрана,
+// оба блока «Регистрируйтесь прямо сейчас и заберите подарки» (в нижнем
+// остаётся только форма GetCourse, без списка подарков и макета),
+// «Позвольте представиться», «Более 25 лет…», «Этот бесплатный курс…»,
+// а на втором экране — «с врачом эндокринологом-гинекологом»
+// и «и избавления от симптомов при АИТ и Гипер/Гипотиреозе - БЕЗ ЛЕКАРСТВ».
+// Откат: поставить false (или git revert коммита) и запушить в main.
+export const MODERATION = true;
 const assetBase = import.meta.env.BASE_URL ?? '/';
 const asset = (path) => `${assetBase}assets/${path}`.replace(/([^:]\/)\/+/g, '$1');
 const doctorImageUrl =
@@ -312,7 +322,7 @@ function renderSecondScreen() {
           <div class="course-offer__content course-offer__content--balanced">
             <div class="course-offer__chip">
               Бесплатный 3-дневный онлайн-курс
-              <span>с врачом эндокринологом-гинекологом</span>
+              ${MODERATION ? '' : '<span>с врачом эндокринологом-гинекологом</span>'}
             </div>
 
             <h2 class="course-offer__title" id="course-offer-title">
@@ -322,8 +332,8 @@ function renderSecondScreen() {
 
             <p class="course-offer__text">
               <strong>пошаговый план оздоровления</strong>
-              <span>и избавления от симптомов при АИТ</span>
-              <span>и Гипер/Гипотиреозе - БЕЗ ЛЕКАРСТВ</span>
+              ${MODERATION ? '' : `<span>и избавления от симптомов при АИТ</span>
+              <span>и Гипер/Гипотиреозе - БЕЗ ЛЕКАРСТВ</span>`}
             </p>
 
             <div class="course-offer__gift">
@@ -534,7 +544,7 @@ function renderReviewsShowcase() {
 
 function renderRegistrationGiftsSection() {
   return `
-    <section class="registration-gifts" aria-labelledby="registration-gifts-title">
+    <section class="registration-gifts"${MODERATION ? ' aria-label="Регистрация на курс"' : ' aria-labelledby="registration-gifts-title"'}>
       <div class="registration-gifts__shell">
         <div class="registration-gifts__bg" aria-hidden="true">
           <img class="registration-gifts__bg-image" src="${registrationBackgroundUrl}" alt="" />
@@ -543,7 +553,7 @@ function renderRegistrationGiftsSection() {
 
         <div class="registration-gifts__layout">
           <div class="registration-gifts__content">
-            <h2 class="registration-gifts__title" id="registration-gifts-title">
+            ${MODERATION ? '' : `<h2 class="registration-gifts__title" id="registration-gifts-title">
               <span>Регистрируйтесь прямо сейчас</span>
               <span>и <em>заберите подарки</em></span>
             </h2>
@@ -574,7 +584,7 @@ function renderRegistrationGiftsSection() {
               </li>
             </ul>
 
-            <p class="registration-gifts__step">…остался 1 шаг</p>
+            <p class="registration-gifts__step">…остался 1 шаг</p>`}
 
             <div
               class="registration-gifts__widget"
@@ -585,14 +595,14 @@ function renderRegistrationGiftsSection() {
             ></div>
           </div>
 
-          <div class="registration-gifts__visual" aria-hidden="true">
+          ${MODERATION ? '' : `<div class="registration-gifts__visual" aria-hidden="true">
             <div class="registration-gifts__rings"></div>
             <img
               class="registration-gifts__mockup"
               src="${registrationMockupUrl}"
               alt=""
             />
-          </div>
+          </div>`}
         </div>
       </div>
     </section>
@@ -644,8 +654,8 @@ function renderSiteFooter() {
 
 export function renderHero() {
   return `
-    <main class="page-shell">
-      <section class="hero" aria-labelledby="hero-title">
+    <main class="page-shell${MODERATION ? ' is-moderation' : ''}">
+      <section class="hero"${MODERATION ? ' aria-label="Бесплатная онлайн-программа"' : ' aria-labelledby="hero-title"'}>
         <div class="hero__atmosphere hero__atmosphere--left" aria-hidden="true"></div>
         <div class="hero__atmosphere hero__atmosphere--right" aria-hidden="true"></div>
         <div class="hero__frame">
@@ -653,15 +663,15 @@ export function renderHero() {
           <div class="hero__card">
             <div class="hero__header">
               <p class="hero__eyebrow">Бесплатная онлайн-программа по восстановлению женского здоровья</p>
-              <h1 class="hero__title" id="hero-title">
+              ${MODERATION ? '' : `<h1 class="hero__title" id="hero-title">
                 Ищу 4-х женщин, которые устали от лишнего веса, хронической усталости, выпадения волос и проблем с ЖКТ
               </h1>
               <p class="hero__lead">
                 Мягкий старт в систему, где вы понимаете причины симптомов, проходите базовую самодиагностику и получаете четкий маршрут действий без перегруза.
-              </p>
+              </p>`}
             </div>
 
-            <div class="hero__grid">
+            ${MODERATION ? '' : `<div class="hero__grid">
               <article class="hero-panel">
                 <h2 class="hero-panel__title">Какие условия?</h2>
                 <ol class="hero-list">
@@ -675,15 +685,15 @@ export function renderHero() {
                   ${renderList(actions)}
                 </ol>
               </article>
-            </div>
+            </div>`}
 
             <div class="hero__footer">
-              <div class="hero-gifts">
+              ${MODERATION ? '' : `<div class="hero-gifts">
                 <h2 class="hero-gifts__title">Регистрируйтесь прямо сейчас и заберите подарки</h2>
                 <ul class="hero-gifts__list">
                   ${renderGiftList(gifts)}
                 </ul>
-              </div>
+              </div>`}
 
               <div class="hero__cta-wrap">
                 <a
@@ -701,9 +711,9 @@ export function renderHero() {
         </div>
       </section>
       ${renderSecondScreen()}
-      ${renderSpeakerScreen()}
-      ${renderSymptomGridScreen()}
-      ${renderBenefitsGridScreen()}
+      ${MODERATION ? '' : renderSpeakerScreen()}
+      ${MODERATION ? '' : renderSymptomGridScreen()}
+      ${MODERATION ? '' : renderBenefitsGridScreen()}
       ${renderReviewsShowcase()}
       ${renderRegistrationGiftsSection()}
       ${renderSiteFooter()}

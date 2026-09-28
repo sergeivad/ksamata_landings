@@ -2668,3 +2668,47 @@ a {
     font-size: 1rem;
   }
 }
+
+/* ============================================================
+   Режим модерации (MODERATION = true в src/hero.js).
+   Скрытые блоки не рендерятся; здесь только подгонка первого
+   экрана, где остались пометка, плашка с датой и кнопка.
+   При MODERATION = false класс .is-moderation не ставится
+   и правила ниже ни на что не влияют.
+   ============================================================ */
+.is-moderation .hero {
+  min-height: auto;
+  padding-bottom: 24px;
+}
+
+.is-moderation .hero__header {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.is-moderation .hero__eyebrow {
+  margin: 0;
+}
+
+.is-moderation .hero__footer {
+  grid-template-columns: minmax(0, 1fr);
+  border-top: 0;
+}
+
+.is-moderation .hero__cta-wrap {
+  width: 100%;
+  max-width: 420px;
+}
+
+.is-moderation .registration-gifts__layout {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+}
+
+.is-moderation .registration-gifts__content {
+  width: 100%;
+}
+
+.is-moderation .registration-gifts__widget {
+  margin-top: 0;
+}

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   getFooterLegalLinks,
   getTomorrowMoscowLabel,
+  MODERATION,
   renderHero,
 } from '../src/hero.js';
 
@@ -26,7 +27,7 @@ describe('renderHero', () => {
     });
   });
 
-  it('renders the approved first-screen structure', () => {
+  it.skipIf(MODERATION)('renders the approved first-screen structure', () => {
     const markup = renderHero();
 
     expect(markup).toContain(getTomorrowMoscowLabel());
@@ -66,7 +67,7 @@ describe('renderHero', () => {
     expect(markup).toContain('/assets/tild6430-6564-4266-b336-633062353636__-2.png');
   });
 
-  it('renders the speaker introduction screen from the archive', () => {
+  it.skipIf(MODERATION)('renders the speaker introduction screen from the archive', () => {
     const markup = renderHero();
 
     expect(markup).toContain('Позвольте представиться');
@@ -88,7 +89,7 @@ describe('renderHero', () => {
     );
   });
 
-  it('renders the symptom grid screen with archive images and CTA', () => {
+  it.skipIf(MODERATION)('renders the symptom grid screen with archive images and CTA', () => {
     const markup = renderHero();
 
     expect(markup).toContain('Более 25 лет я помогаю женщинам, которые устали от');
@@ -109,7 +110,7 @@ describe('renderHero', () => {
     expect(markup).toContain('/assets/tild3336-3030-4539-b731-633636353266__image_40.png');
   });
 
-  it('renders the benefits grid screen with archive images and registration CTA', () => {
+  it.skipIf(MODERATION)('renders the benefits grid screen with archive images and registration CTA', () => {
     const markup = renderHero();
 
     expect(markup).toContain(
@@ -152,7 +153,7 @@ describe('renderHero', () => {
     expect(markup).toContain('data-review-open');
   });
 
-  it('renders the registration gifts block with live getcourse widget placeholder', () => {
+  it.skipIf(MODERATION)('renders the registration gifts block with live getcourse widget placeholder', () => {
     const markup = renderHero();
 
     expect(markup).toContain('Регистрируйтесь прямо сейчас и заберите подарки');
@@ -163,6 +164,42 @@ describe('renderHero', () => {
     expect(markup).toContain('data-gc-inline-widget');
     expect(markup).toContain('https://gc.tirolab.ru/pl/lite/widget/script?id=1465148');
     expect(markup).toContain('/assets/tild3937-6465-4265-b836-336434313539__group_1833-2.png');
+  });
+
+  it.runIf(MODERATION)('hides the blocks listed in the moderation brief', () => {
+    const markup = renderHero();
+
+    expect(markup).toContain('class="page-shell is-moderation"');
+    for (const hidden of [
+      'Ищу 4-х женщин',
+      'Мягкий старт в систему',
+      'Какие условия?',
+      'Что делать?',
+      'заберите подарки',
+      'САМОДИАГНОСТИКА 5 ДЕФИЦИТОВ',
+      'Самодиагностика 5 дефицитов',
+      '…остался 1 шаг',
+      'Позвольте представиться',
+      'Более 25 лет я помогаю женщинам',
+      'Этот бесплатный курс даст возможность',
+      'с врачом эндокринологом-гинекологом',
+      'и избавления от симптомов при АИТ',
+      'и Гипер/Гипотиреозе - БЕЗ ЛЕКАРСТВ',
+      'id="hero-title"',
+      'id="registration-gifts-title"',
+      'registration-gifts__mockup',
+    ]) {
+      expect(markup).not.toContain(hidden);
+    }
+
+    expect(markup).toContain('Бесплатная онлайн-программа по восстановлению женского здоровья');
+    expect(markup).toContain('Зарегистрироваться');
+    expect(markup).toContain('Бесплатный 3-дневный онлайн-курс');
+    expect(markup).toContain('пошаговый план оздоровления');
+    expect(markup).toContain('Стать участником бесплатно');
+    expect(markup).toContain('reviews-showcase');
+    expect(markup).toContain('data-gc-inline-widget');
+    expect(markup).toContain('site-footer');
   });
 
   it('renders a popup host for all getcourse CTA buttons', () => {
